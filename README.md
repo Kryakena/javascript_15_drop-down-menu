@@ -187,6 +187,9 @@ $(document).ready(function () {
 }
 ```
 
+![9](https://github.com/user-attachments/assets/44002628-9f01-4fdd-be39-3c4fdaa0d0d6)
+
+
 10. в файле style.css настраиваем Третий уровень
 
 ```css
@@ -217,6 +220,9 @@ $(document).ready(function () {
    padding: 5px 10px;
 }
 ```
+
+![2025-01-03_01-50-17](https://github.com/user-attachments/assets/943c6b40-7d72-4586-aac9-f1387c95965e)
+
 
 11. в файле style.css настраиваем тачскрины
 
