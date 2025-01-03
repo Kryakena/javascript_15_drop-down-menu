@@ -1,7 +1,15 @@
-# Выпадающее меню
+# 📱 Адаптивное выпадающее меню 📱
 
 Источник: видео "Выпадающее меню на CSS + адаптив под тачскрины" 
 https://vk.com/im/convo/19460369?entrypoint=list_all&z=video-125918837_456239146%2Fd816887db87d3881aa
+
+![2025-01-03_14-05-36](https://github.com/user-attachments/assets/6c1476c3-ff56-45b0-951f-b306cbade465) ![2025-01-03_14-05-52](https://github.com/user-attachments/assets/0c0a8141-2399-4292-a2f8-c74ddb82a9a6) ![2025-01-03_14-06-13](https://github.com/user-attachments/assets/4708b0d5-47ba-4111-825c-829e38e3138f)
+
+
+
+https://github.com/user-attachments/assets/4968f07f-edcd-43d2-a452-8d39509a1c8f
+
+
 
 1. создаем создаем файлы index.html, style.css (в папке css), script.js (в папке js) в папке проекта.
 
@@ -288,12 +296,17 @@ body.mouse .sub-menu__list>li:hover .sub-sub-menu__list {
 }
 ```
 
+![11д](https://github.com/user-attachments/assets/97dda40c-b04d-4d89-af8e-cecaa4785611)
+
 12. script.js - событие по клику
 
 ```js
 subMenu.classList.toggle('open'); // Чтобы после нажатия открывать выпадающее меню
 thisArrow.classList.toggle('active'); // Чтобы стрелка при нажатии стала активной
 ```
+
+![12](https://github.com/user-attachments/assets/7c8a54b2-a78f-4191-9b39-ea695426ef1a)
+
 
 13. в style.css - При нажатии открывается и закрывается выпадающий списоки срабатывает ссылка
 
@@ -446,6 +459,10 @@ style.css
 </body>
 </html>
 ```
+
+![2025-01-03_14-03-14](https://github.com/user-attachments/assets/477795b9-a553-461d-8729-44935a7e11dc)
+![2025-01-03_14-03-45](https://github.com/user-attachments/assets/31448dd0-b477-43b9-8d1b-ce824851c058)
+
 
 2. style.css
 
@@ -609,6 +626,12 @@ body.touch .arrow {
 }
 ```
 
+![2025-01-03_14-04-01](https://github.com/user-attachments/assets/9d6d3704-efaf-42e7-82b0-1f30552f2914)
+![2025-01-03_14-04-17](https://github.com/user-attachments/assets/66b82824-06e8-4c45-89c1-ac42db17381b)
+![2025-01-03_14-04-34](https://github.com/user-attachments/assets/d3a9d9c3-6c28-421d-91c3-e31deb98c2ad)
+![2025-01-03_14-04-45](https://github.com/user-attachments/assets/b988833f-3fc2-4963-b382-1e267e505cf4)
+
+
 3. script.js
 
 ```js
@@ -639,3 +662,5 @@ if (isMobile.any()) {
     body.classList.add('mouse');
 }
 ```
+
+![2025-01-03_14-04-59](https://github.com/user-attachments/assets/a981dfb1-4db6-4a61-a207-3c8907098963)
