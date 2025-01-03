@@ -61,12 +61,17 @@ html,body{
 /* Основные стили */
 ```
 
-4. в файл script.js вставляем шаблон
+4. в файл script.js вставляем шаблон для правильной работы тачскрина с мобильных устройств
 
 ```js
-$(document).ready(function () {
-
-});
+let isMobile = {
+    Android: function() {return navigator.userAgent.match(/Android/i);},
+    BlackBerry: function() {return navigator.userAgent.match(/BlackBerry/i);},
+    iOS: function() {return navigator.userAgent.match(/iPhone|iPad|iPod/i);},
+    Opera: function() {return navigator.userAgent.match(/Opera Mini/i);},
+    Windows: function() {return navigator.userAgent.match(/IEMobile/i);},
+    any: function() {return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
+};
 ```
 
 5. в файле index.html называем проект в разделе head
@@ -148,7 +153,7 @@ $(document).ready(function () {
    display: flex; /* Выстроить все пункты в ряд: "Первый уровеньПервый уровеньПервый уровень" */
 }
 .menu__list>li{ /* Знак > значит, что касается только 1 элемента li */
-   margin: 0 10px 0 0; /* Для всех элементов li отступ вправо: "Первый уровень Первый уровень Первый уровень" */
+   margin: 0 30px 0 0; /* Для всех элементов li отступ вправо: "Первый уровень Первый уровень Первый уровень" */
 }
 
 .menu__link {
@@ -224,7 +229,84 @@ $(document).ready(function () {
 ![2025-01-03_01-50-17](https://github.com/user-attachments/assets/943c6b40-7d72-4586-aac9-f1387c95965e)
 
 
-11. в файле style.css настраиваем тачскрины
+11. в файле настраиваем тачскрины (без этого не кликнуть на ссылку на экране телефона)
+
+а) index.html
+```html
+<span class="menu__arrow arrow"></span>
+```
+б) style.css
+```css
+.arrow { /* Стрелка для выпадающего списка */
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+.menu__arrow {}
+```
+в) script.js (навешиваем событие, при котором, если есть выпадающий список, то появляется местодля стрелочки)
+```js
+    let body = document.querySelector('body');
+if (isMobile.any()) {
+    body.classList.add('touch')
+    let arrow= document.querySelectorAll('.arrow');
+    for(i=0; i<arrow.length; i++) {
+        let thisLink = arrow[i].previousElementSibling; // Это <a href="" class="menu__link">Первый уровень</a>
+        let subMenu = arrow[i].nextElementSibling; // Это выпадающее меню <ul class="sub-menu__list">
+        let thisArrow = arrow[i]; // Текущая стрелка
+
+        thisLink.classList.add('parent');
+        arrow[i].addEventListener('click', function () {
+
+        });
+    }
+} else {
+    body.classList.add('mouse');
+}
+```
+г) style.css переносим полностью классы ".sub-menu__list>li:hover .sub-sub-menu__list" и ".menu__list>li:hover .sub-menu__list" в body.mouse
+```css
+body.mouse .menu__list>li:hover .sub-menu__list {
+    display: block; /* Прячем "Третий уровень" во "Второй уровень" */
+}
+
+body.mouse .sub-menu__list>li:hover .sub-sub-menu__list {
+    display: block; /* Прячем "Третий уровень" во "Второй уровень" */
+}
+```
+д) style.css добавляем новый класс
+```css
+.menu a.parent{ /* На мобильных устройствах отодвинется вправо стрелка, чтобы не наезжать на меню */
+    margin: 0 30px 0 0;
+}
+```
+
+12. script.js - событие по клику
+
+```js
+subMenu.classList.toggle('open'); // Чтобы после нажатия открывать выпадающее меню
+thisArrow.classList.toggle('active'); // Чтобы стрелка при нажатии стала активной
+```
+
+13. в style.css - При нажатии открывается и закрывается выпадающий списоки срабатывает ссылка
+
+```css
+/* При нажатии открывается и закрывается выпадающий списоки срабатывает ссылка */
+body.touch .sub-menu__list.open{
+    display: block;
+}
+body.touch .sub-sub-menu__list.open{
+    display: block;
+}
+```
+
+14. в style.css стилизуем стрелки
 
 ```css
 

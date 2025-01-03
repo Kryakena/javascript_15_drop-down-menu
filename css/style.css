@@ -23,6 +23,10 @@ html,body{
 .menu a{
     text-decoration: none; /* Убрать подчеркивание у ссылок */
 }
+.menu a.parent{ /* На мобильных устройствах отодвинется вправо стрелка, чтобы не наезжать на меню */
+    margin: 0 30px 0 0;
+}
+
 .menu li{
     position: relative; /* Т.к. мы будем позиционировать только со стороны li */
     list-style: none; /* Убрать стандартную стилизацию */
@@ -32,11 +36,7 @@ html,body{
     display: flex; /* Выстроить все пункты в ряд: "Первый уровеньПервый уровеньПервый уровень" */
 }
 .menu__list>li{ /* Знак > значит, что касается только 1 элемента li */
-    margin: 0 10px 0 0; /* Для всех элементов li отступ вправо: "Первый уровень Первый уровень Первый уровень" */
-}
-
-.menu__list>li:hover .sub-menu__list {
-    display: block; /* При наведении на "Первый уровень" появляется выпадающий список "Второй уровень" */
+    margin: 0 30px 0 0; /* Для всех элементов li отступ вправо: "Первый уровень Первый уровень Первый уровень" */
 }
 
 .menu__link {
@@ -54,9 +54,6 @@ html,body{
 
 .sub-menu__list>li{
     background-color: #fff;
-}
-.sub-menu__list>li:hover .sub-sub-menu__list {
-    display: block; /* Прячем "Третий уровень" во "Второй уровень" */
 }
 
 .sub-menu__link {
@@ -80,4 +77,34 @@ html,body{
     color: #fff;
     display: inline-block;
     padding: 5px 10px;
+}
+
+.arrow { /* Стрелка для выпадающего списка */
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+.menu__arrow {}
+
+
+body.mouse .menu__list>li:hover .sub-menu__list {
+    display: block; /* Прячем "Третий уровень" во "Второй уровень" */
+}
+
+body.mouse .sub-menu__list>li:hover .sub-sub-menu__list {
+    display: block; /* Прячем "Третий уровень" во "Второй уровень" */
+}
+
+/* При нажатии открывается и закрывается выпадающий списоки срабатывает ссылка */
+body.touch .sub-menu__list.open{
+    display: block;
+}
+body.touch .sub-sub-menu__list.open{
+    display: block;
 }
