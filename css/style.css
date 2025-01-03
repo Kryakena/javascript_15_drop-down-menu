@@ -80,6 +80,7 @@ html,body{
 }
 
 .arrow { /* Стрелка для выпадающего списка */
+    display: none;
     position: absolute;
     right: 0;
     top: 12px;
@@ -88,6 +89,17 @@ html,body{
     border-top: 10px solid #fff;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
+}
+.arrow.active {
+    transform: rotate(-180deg); /* Разворот стрелки вверх, если открыт выпадающий список */
+}
+
+.sub-menu__arrow.arrow {
+    right: 10px;
+    border-left: 10px solid #000;
+    border-right: none;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
 }
 
 .menu__arrow {}
@@ -107,4 +119,39 @@ body.touch .sub-menu__list.open{
 }
 body.touch .sub-sub-menu__list.open{
     display: block;
+}
+body.touch .arrow {
+    display: block;
+}
+
+/* Адаптация под вертикальные мобильные устройства */
+@media (max-width: 767px) {
+    .wrapper{
+        padding: 15px;
+    }
+    .menu__list {
+        display: block;
+    }
+    .menu__list>li{
+        margin: 0 0 10px 0;
+    }
+    .sub-menu__list{ /* Выпадающее меню сдвигает вниз остальные пункты меню */
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+    .sub-sub-menu__list{ /* Выпадающее меню сдвигает вниз остальные пункты меню */
+        padding: 0 5px;
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+    .sub-menu__arrow.arrow {
+        right: 10px;
+        top: 15px;
+        border-bottom: none;
+        border-left: 10px solid transparent;
+        border-top: 10px solid #000;
+        border-right: 10px solid transparent;
+    }
 }
