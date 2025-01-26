@@ -10,7 +10,6 @@ https://vk.com/im/convo/19460369?entrypoint=list_all&z=video-125918837_456239146
 https://github.com/user-attachments/assets/4968f07f-edcd-43d2-a452-8d39509a1c8f
 
 
-
 1. создаем создаем файлы index.html, style.css (в папке css), script.js (в папке js) в папке проекта.
 
 2. в файле index.html готовим шаблон
